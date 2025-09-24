@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event App</title>
+  </head>
+  <body>
+    <h1>Event App</h1>
+
+    <h3>Create / Edit Event</h3>
+
+    <div id="events-list"></div>
+
+    <form id="event-form">
+      <input type="hidden" id="event-id" />
+      <label>Title</label>
+      <input type="text" id="event-title" placeholder="Text" /><br />
+      <label>Date</label>
+      <input type="date" id="event-date" placeholder="Date" /><br />
+      <label>Description</label><br />
+      <textarea id="event-description" placeholder="Description"></textarea
+      ><br />
+      <button type="submit" id="submit-button" data-submit-type="create">
+        Create Event
+      </button>
+    </form>
+
+    <h3>Events</h3>
+    <div id="events">Loading events...</div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
