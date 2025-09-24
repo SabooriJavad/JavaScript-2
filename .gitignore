@@ -1,16 +1,12 @@
 # Node / Backend
-backend/node_mpdules/
+backend/node_modules/
 backend/dist/
 backend/.env
 
-
-#Frontend /vite
+# Frontend / Vite
 frontend/node_modules/
 frontend/dist/
-frontend/ .env
+frontend/.env
 
-
-#Loggar
-
-npm_debug.Log*
-yran-debug.log*
+# Logs
+*.log
