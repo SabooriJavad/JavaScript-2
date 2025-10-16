@@ -1,16 +1,11 @@
 import express, { Request, Response } from "express"
 import cors from "cors"
 import { MongoClient, ObjectId, Db, Collection } from "mongodb"
-import { validate } from "./validate.js"
+import { validate } from "./validate"
+import { EventData } from "./types"
+import { EventInput } from "./types"
 
-interface EventData {
-  _id?: string
-  eventId?: string
-  eventTitle: string
-  eventDate: string
-  eventDescription: string
-  submitType?: "create" | "edit"
-}
+
 
 const app = express()
 app.use(cors())
@@ -25,7 +20,7 @@ async function connectDB() {
   await client.connect()
   db = client.db("eventdb")
   collection = db.collection<EventData>("events")
-  console.log("✅ Connected to MongoDB")
+  console.log(" Connected to MongoDB")
 }
 
 // GET /events → hämta alla events
@@ -41,7 +36,7 @@ app.get("/events", async (_req: Request, res: Response) => {
 
 // POST /event → skapa eller redigera event
 app.post("/event", async (req: Request, res: Response) => {
-  const formData: EventData = req.body
+  const formData: EventInput = req.body
 
   if (!validate(formData)) {
     return res.status(400).json({ error: "Invalid data" })
@@ -60,7 +55,11 @@ app.post("/event", async (req: Request, res: Response) => {
       await collection.updateOne(filter, updateDoc)
       res.json({ message: "Event updated" })
     } else {
-      await collection.insertOne(formData)
+      await collection.insertOne({
+        eventTitle: formData.eventTitle,
+        eventDate: formData.eventDate,
+        eventDescription: formData.eventDescription,
+      } as EventData)
       res.json({ message: "Event created" })
     }
   } catch (err) {
@@ -68,6 +67,7 @@ app.post("/event", async (req: Request, res: Response) => {
     res.status(500).json({ error: "Database error" })
   }
 })
+
 
 // DELETE /event/:id
 app.delete("/event/:id", async (req: Request, res: Response) => {
@@ -83,7 +83,7 @@ app.delete("/event/:id", async (req: Request, res: Response) => {
 
 if (process.env.NODE_ENV !== "test") {
   connectDB().then(() => {
-    app.listen(3000, () => console.log("🚀 Backend running on http://localhost:3000"))
+    app.listen(3000, () => console.log(" Backend running on http://localhost:3000"))
   })
 }
 
