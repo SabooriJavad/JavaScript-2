@@ -9,7 +9,12 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@playwright/test": "^1.56.0",
+    "@types/react-router-dom": "^5.3.3",
     "typescript": "~5.9.3",
     "vite": "^7.1.7"
+  },
+  "dependencies": {
+    "react-router-dom": "^7.9.4"
   }
 }
