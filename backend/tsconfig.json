@@ -1,13 +1,12 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "CommonJS",
-    "rootDir": "./",
     "outDir": "dist",
-    "strict": true,
+    "rootDir": ".",
+    "module": "commonjs",
+    "target": "es2020",
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "strict": true
   },
-  "include": ["**/*.ts"],
-  
+  "include": ["server.ts", "routes/**/*.ts"],   // Lägg till alla produktionsfiler här
+  "exclude": ["tests", "node_modules"]         // Ignorera test-filer
 }

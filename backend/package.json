@@ -6,12 +6,12 @@
   "directories": {
     "test": "tests"
   },
- "scripts": {
-  "dev": "nodemon --watch ./ --ext ts,json --exec ts-node server.ts",
-  "build": "tsc",
-  "start": "node dist/server.js",
-  "test": "vitest"
-},
+  "scripts": {
+    "dev": "nodemon --watch ./ --ext ts,json --exec ts-node server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "test": "vitest"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -25,7 +25,9 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/node": "^24.8.0",
+    "@types/supertest": "^6.0.3",
     "nodemon": "^3.1.10",
+    "supertest": "^7.1.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3",
     "vitest": "^3.2.4"
